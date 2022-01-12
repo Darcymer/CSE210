@@ -14,8 +14,21 @@ def main():
         return: None
     '''
     # assign/get the first player
+    #----------player ='X'
+
+    #nextPlayer = next_player(player)
+    #print(player)
 
     # create a board
+    #-------create_board()
+    #
+    '''
+    board = [ ['','',''],
+            ['','',''],
+            ['','','']
+    ]'
+    '''
+
 
     # loop if there isn't a winner or if the game isn't a draw
 
@@ -35,20 +48,34 @@ def create_board():
         It initializes the positions with the numbers for the person to pick
         return: the board as a list
     '''
+    board = list(range(1,10))
+    return board
     pass
 
 def display_board(board):
     ''' Displays the current board
         return: None
     '''
+    print()
+
+    print('---------')
+
+    print('---------')
+
+    print()
     pass
 
 def is_draw(board):
     ''' return: True if board is a draw, False if board is still playable '''
+   
     pass
 
 def is_winner(board):
     ''' return: True if someone won, False if there is no winner '''
+    '''
+    return(board [0] == board[1] == board[2] or
+           board [3] == board[4] == board[5] or ..... excetera)
+    '''
     pass
 
 def make_move(player, board):
@@ -60,6 +87,9 @@ def make_move(player, board):
 
 def next_player(current):
     ''' return: x if current is o, otherwise x '''
+    if current == 'x' or current == '':
+        return 'o'
+    return 'x'
     pass
 
 # run main if this has been called from the command line
