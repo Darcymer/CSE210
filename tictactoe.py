@@ -6,16 +6,8 @@ Stub Code provided by Adam Hayes
 
 
 def main():
-    ''' Holds the main game loop logic
-        Selects a player
-        Builds the board
-        Loops through Players until a winner is found or game is over
-        Displays results to user
-        Thanks them for playing
-        return: None
-    '''
     # assign/get the first player
-    player ='X'
+    player =next_player('')
 
     nextPlayer = next_player(player)
     print(player)
@@ -27,6 +19,7 @@ def main():
     
 
     display_board(board)
+    print("Thats what we call GG's!!!")
 
     # loop if there isn't a winner or if the game isn't a draw
 
@@ -46,9 +39,9 @@ def create_board():
         return: the board as a list
     '''
     
-    board = [ ['','',''],
-            ['','',''],
-            ['','','']
+    board = [ ['0','1','2'],
+            ['3','4','5'],
+            ['6','7','8']
     ]
 
     board = list(range(1,10))
@@ -87,6 +80,7 @@ def is_winner(board):
            board [0] == board[4] == board[8] or
            board [2] == board[4] == board[6])
            '''
+    #fix to make it non 2 dimensional
     def check_counts(list):
         x_count = list.count('x')
         o_count = list.count('o')
