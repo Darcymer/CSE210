@@ -2,6 +2,7 @@
 '''
 Author: Darcy Merilan
 Stub Code provided by Adam Hayes
+function for is winner: Daniel Loveless
 '''
 
 
@@ -9,29 +10,18 @@ def main():
     # assign/get the first player
     player =next_player('')
 
-    nextPlayer = next_player(player)
-    print(player)
-
     # create a board
     board = create_board()
-    #create_board()
-    
-    
+
+    #loop
+    while not (is_winner(board) or draw(board)):
+        display_board(board)
+        make_move(player, board)
+        player = next_player(player)
 
     display_board(board)
     print("Thats what we call GG's!!!")
 
-    # loop if there isn't a winner or if the game isn't a draw
-
-        # display the board
-
-        # allow the player to make a move
-
-        # pick the next player
-
-    # display the final board
-
-    # show message for winner and thanks for playing
 
 def create_board():
     ''' Creates a list that holds the spots on the board
@@ -49,27 +39,27 @@ def create_board():
 
 
 def display_board(board):
-    ''' Displays the current board
-        return: None
-    '''
+    #Displays the current board
+    
     print(f'{board[0]}|{board[1]}|{board[2]}|')
-    print('--------')
+    print('------')
     print(f'{board[3]}|{board[4]}|{board[5]}|')
-    print('---------')
+    print('-------')
     print(f'{board[6]}|{board[7]}|{board[8]}|')
     print()
  
 
-def is_draw(board):
-    ''' return: True if board is a draw, False if board is still playable '''
-    for square in range(9):
-       if board[square] != 'x' and board[square] != 'o':
+def draw(board):
+    #this is a loop that allows for wherever the location is, if the game cannot make a winner... its a draw
+    # aka if the game cant make any more x's and anymore o's... its a draw
+    for location in range(9):
+       if board[location] != 'x' and board[location] != 'o':
            return False
     return True
     
 
 def is_winner(board):
-    ''' return: True if someone won, False if there is no winner '''
+    #this code basically allows the winner to be called by these and only these parameters
     '''
     return(board [0] == board[1] == board[2] or
            board [3] == board[4] == board[5] or
@@ -79,31 +69,33 @@ def is_winner(board):
            board [2] == board[5] == board[8] or
            board [0] == board[4] == board[8] or
            board [2] == board[4] == board[6])
-           '''
-    #fix to make it non 2 dimensional
+         '''  
+
+    #group effort in code to look at all possibility for 3 in a row and selesct winner, this is done through a function inside the winner function
     def check_counts(list):
-        ''' return: True if there are 3 x's or o'x in the given list '''
+        # return: True if there are 3 x's or o'x in the given list 
         x_count = list.count('x')
         o_count = list.count('o')
         if (x_count == 3) or (o_count == 3):
             return True
-    # check rows
+    # this checks for 3 in a row for either x or o
     row = []
     i = 0
-    for square in board:
+    for block in board:
         if i % 3 == 0:
             if check_counts(row):
                 return True
             row = []
-        row.append(square)
-    # check columns
+        row.append(block)
+          
+    # same as above but for columns
     for i in range(3):
         col = []
         for j in range(0, 9, 3):
             col.append(board[i + j])
         if check_counts(col):
             return True
-    # check diagonals
+    # same as the previous 2 but for diagonals
     # diagonal 1
     diagonal = []
     for i in range(0, 9, 4):
@@ -121,10 +113,10 @@ def is_winner(board):
 
 
 def make_move(player, board):
-    ''' Prompts player to select a square to play
-        Assigns the player to that board location if it is a legal move
-        return: None
-    '''
+    #we created a location, asked the player to input a number between 1-9, they selelect it and moves the player
+    location = int(input(f"{player}'s turn to choose a square (1-9): "))
+    board[location - 1] = player
+
 
     
 
