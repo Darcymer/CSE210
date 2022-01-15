@@ -82,37 +82,39 @@ def is_winner(board):
            '''
     #fix to make it non 2 dimensional
     def check_counts(list):
+        ''' return: True if there are 3 x's or o'x in the given list '''
         x_count = list.count('x')
         o_count = list.count('o')
         if (x_count == 3) or (o_count == 3):
             return True
     # check rows
-    for row in range(3):
-        for col in range(3):
-            if check_counts(board[row]):
+    row = []
+    i = 0
+    for square in board:
+        if i % 3 == 0:
+            if check_counts(row):
                 return True
+            row = []
+        row.append(square)
     # check columns
-    for col in range(3):
-        column = []
-        for row in range(3):
-            column.append(board[row][col])
-        if check_counts(column):
-                return True
-    # check diaganols
+    for i in range(3):
+        col = []
+        for j in range(0, 9, 3):
+            col.append(board[i + j])
+        if check_counts(col):
+            return True
+    # check diagonals
     # diagonal 1
     diagonal = []
-    for i in range(3):
-        diagonal.append(board[i][i])
-    if check_counts(column):
+    for i in range(0, 9, 4):
+        diagonal.append(board[i])
+    if check_counts(diagonal):
         return True
-    #diagonal 2
+    # diagonal 2
     diagonal = []
-    row, col = 0, 2
-    for i in range(3):
-        diagonal.append(board[row][col])
-        row += 1
-        col -= 1
-    if check_counts(column):
+    for i in range(2, 8, 2):
+        diagonal.append(board[i])
+    if check_counts(diagonal):
         return True
     # else:
     return False
