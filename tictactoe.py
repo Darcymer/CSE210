@@ -115,6 +115,9 @@ def is_winner(board):
 def make_move(player, board):
     #we created a location, asked the player to input a number between 1-9, they selelect it and moves the player
     location = int(input(f"{player}'s turn to choose a square (1-9): "))
+    while board[location - 1] == ('X' or 'O'):
+        print('Invalid entry! Try another square:\n')
+        location = input(player, '\'s turn to choose a square (1-9): ')
     board[location - 1] = player
 
 
