@@ -28,11 +28,12 @@ def create_board():
         It initializes the positions with the numbers for the person to pick
         return: the board as a list
     '''
-    
-    board = [ ['0','1','2'],
-            ['3','4','5'],
-            ['6','7','8']
-    ]
+    '''
+    board = [['1','2','3'],
+            ['4','5','6'],
+            ['7','8','9']
+    ]'''
+
 
     board = list(range(1,10))
     return board
@@ -60,7 +61,7 @@ def draw(board):
 
 def is_winner(board):
     #this code basically allows the winner to be called by these and only these parameters
-    '''
+    
     return(board [0] == board[1] == board[2] or
            board [3] == board[4] == board[5] or
            board [6] == board[7] == board[8] or
@@ -69,9 +70,9 @@ def is_winner(board):
            board [2] == board[5] == board[8] or
            board [0] == board[4] == board[8] or
            board [2] == board[4] == board[6])
-         '''  
-
-    #group effort in code to look at all possibility for 3 in a row and selesct winner, this is done through a function inside the winner function
+           
+    '''
+    #group effort in code to look at all possibility for 3 in a row and select winner, this is done through a function inside the winner function
     def check_counts(list):
         # return: True if there are 3 x's or o'x in the given list 
         x_count = list.count('x')
@@ -79,6 +80,7 @@ def is_winner(board):
         if (x_count == 3) or (o_count == 3):
             return True
     # this checks for 3 in a row for either x or o
+    
     row = []
     i = 0
     for block in board:
@@ -88,6 +90,8 @@ def is_winner(board):
             row = []
         row.append(block)
           
+   
+
     # same as above but for columns
     for i in range(3):
         col = []
@@ -109,16 +113,16 @@ def is_winner(board):
     if check_counts(diagonal):
         return True
     # else:
-    return False
+    return False'''
 
 
 def make_move(player, board):
     #we created a location, asked the player to input a number between 1-9, they selelect it and moves the player
-    location = int(input(f"{player}'s turn to choose a square (1-9): "))
-    while board[location - 1] == ('X' or 'O'):
+    space = int(input(f"{player}'s turn to choose a square (1-9): "))
+    while board[space - 1] == ('X' or 'O'):
         print('Invalid entry! Try another square:\n')
-        location = input(player, '\'s turn to choose a square (1-9): ')
-    board[location - 1] = player
+        space = int(input(f"{player}'s turn to choose a square (1-9): "))
+    board[space - 1] = player
 
 
     
