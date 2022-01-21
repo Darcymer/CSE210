@@ -42,7 +42,7 @@ print(Dupond.full_name)
 #------------------'''
 class Person:
     def __init__(self,Full_name):
-        self.full
+        self.full_name
 
 class Restaurant:
 
